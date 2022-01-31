@@ -5,6 +5,10 @@ app.get('/', function(req, res) {
     res.send("Hello World!");
 });
 
-console.log("Test 1 ");
-app.listen(8080, '0.0.0.0');
-console.log("Test 2");
+app.listen(8080, '0.0.0.0', function(error) {
+    if (error) {
+        console.log("Something went wrong: ", error);
+    } else {
+        console.log("Server is listening on port 8080");
+    }
+});
