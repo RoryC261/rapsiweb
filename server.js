@@ -6,5 +6,5 @@ app.get('/', function(req, res) {
 });
 
 console.log("Test 1 ");
-app.listen(8080);
+app.listen(8080, '0.0.0.0');
 console.log("Test 2");
