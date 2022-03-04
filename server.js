@@ -25,7 +25,7 @@ app.get("/", function(req, res){
 
         var output = "<h1>Names</h1>";
 
-        for(var i =0; i < resourceLimits.length; i++){
+        for(var i =0; i < result.length; i++){
             output += "<div>";
             output += "<h2>" + result[i].name + "</h2>";
             output += "</div>";
