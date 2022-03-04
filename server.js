@@ -12,7 +12,7 @@ app.use(express.static('public')); // Serves static files
 var db;
 MongoClient.connect(url, function(err, database){
     if(err) throw err;
-    db = databse;
+    db = database;
     app.listen(8080);
     console.log("Server Connected");
 })
