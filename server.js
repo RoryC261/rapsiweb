@@ -8,6 +8,7 @@ const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb://localhost:27017/test_database";
 
 app.use(express.static('public')); // Serves static files
+app.use(express.urlencoded({extended:true})); // Parsing thing not sure what it does but need this
 
 // Server Connection
 var db;
@@ -18,7 +19,7 @@ MongoClient.connect(url, function(err, database){
     console.log("Server Connected");
 })
 
-// Root
+// Index
 app.get("/", function(req, res){
     db.collection("names").find().toArray(function(err, result){
         if(err) throw err;
@@ -31,5 +32,14 @@ app.get("/", function(req, res){
             output += "</div>";
         }
         res.send(output);
+    })
+})
+
+// Add
+app.post("/add", function(req, res){
+    db.collection("names").save(req.body, function(err, result){
+        if(err) throw err;
+        console.log("Saved to database");
+        res.redirect("/");
     })
 })
