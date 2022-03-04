@@ -1,5 +1,6 @@
 // Express Server Setup 
 var express = require('express');
+const { resourceLimits } = require('worker_threads');
 var app = express();
 
 // MongoDB Setup
@@ -15,4 +16,20 @@ MongoClient.connect(url, function(err, database){
     db = database;
     app.listen(8080);
     console.log("Server Connected");
+})
+
+// Root
+app.get("/all", function(req, res){
+    db.collection("names").find().toArray(function(err, result){
+        if(err) throw err;
+
+        var output = "<h1>Names</h1>";
+
+        for(var i =0; i < resourceLimits.length; i++){
+            output += "<div>";
+            output += "<h2>" + result[i].name + "</h2>";
+            output += "</div>";
+        }
+        res.send(output);
+    })
 })
