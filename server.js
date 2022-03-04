@@ -10,6 +10,8 @@ const url = "mongodb://localhost:27017/test_database";
 app.use(express.static('public')); // Serves static files
 app.use(express.urlencoded({extended:true})); // Parsing thing not sure what it does but need this
 
+app.set("view engine", "ejs"); // Sets view engine to ejs
+
 // Server Connection
 var db;
 MongoClient.connect(url, function(err, database){
