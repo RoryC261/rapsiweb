@@ -4,9 +4,6 @@ var app = express();
 
 app.use(express.static('public')); // Serves static files
 
-app.get('/', function(req, res) {
-    res.sendFile("index.html");
-});
 
 app.listen(8080, '0.0.0.0', function(error) {
     if (error) {
