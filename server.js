@@ -27,7 +27,7 @@ app.get("/", function(req, res){
 
         for(var i =0; i < result.length; i++){
             output += "<div>";
-            output += "<h2>" + result[i].names.firstname + "</h2>";
+            output += "<h2>" + result[i].firstname + "</h2>";
             output += "</div>";
         }
         res.send(output);
