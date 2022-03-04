@@ -21,6 +21,17 @@ MongoClient.connect(url, function(err, database){
     console.log("Server Connected");
 })
 
+// Render Login Page
+app.get("/login", function(req, res){
+    res.render("pages/login");
+})
+
+// Login Authentication 
+app.post("/loginSubmit", function(req, res){
+    console.log("User Logged In"); // TEST
+})
+
+/*
 // Index
 app.get("/", function(req, res){
     db.collection("names").find().toArray(function(err, result){
@@ -37,6 +48,7 @@ app.get("/", function(req, res){
     })
 })
 
+// Add names page
 app.get("/add", function(req, res){
     res.render("pages/addnames");
 })
@@ -49,3 +61,4 @@ app.post("/add", function(req, res){
         res.redirect("/");
     })
 })
+*/
