@@ -8,13 +8,6 @@ app.get('/', function(req, res) {
     res.sendFile("index.html");
 });
 
-// Attempt at domain pointing (pretty sure does absolutely nothing)
-app.use((req, res, next) => {
-    if (req.hostname === "soulchokes.com") {
-        return next();
-    }
-})
-
 app.listen(8080, '0.0.0.0', function(error) {
     if (error) {
         console.log("Something went wrong: ", error);
