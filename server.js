@@ -37,6 +37,10 @@ app.get("/", function(req, res){
     })
 })
 
+app.get("/add", function(req, res){
+    res.render("pages/addnames");
+})
+
 // Add
 app.post("/add", function(req, res){
     db.collection("names").save(req.body, function(err, result){
