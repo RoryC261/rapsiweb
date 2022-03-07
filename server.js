@@ -47,7 +47,8 @@ app.post("/signupSubmit", function(req, res){
         if (err) throw err;
 
         if (!result) {
-            console.log("Username Already Exists") // TEST    
+            console.log("Username Already Exists") // TEST
+            res.redirect("/login");
         }
     })
 
