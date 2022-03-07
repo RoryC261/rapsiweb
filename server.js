@@ -43,7 +43,7 @@ app.post("/signupSubmit", function(req, res){
 
     var username = req.body.username;
 
-    db.collection("users").findOne({"username": username}, function(err, result){
+    db.collection("users").findOne({"users.username": username}, function(err, result){
         if (err) throw err;
 
         if (!result) {
