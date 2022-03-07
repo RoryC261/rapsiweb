@@ -52,6 +52,8 @@ app.post("/signupSubmit", function(req, res){
 
         if (!result) {
             console.log("Username Already Exists"); // TEST
+        } else {
+            console.log("Username exists");
         }
     })
 
