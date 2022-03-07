@@ -5,7 +5,7 @@ var app = express();
 
 // MongoDB Setup
 const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb://localhost:27017/test_database";
+const url = "mongodb://localhost:27017/rapsiweb";
 
 app.use(express.static('public')); // Serves static files
 app.use(express.urlencoded({extended:true})); // Parsing thing not sure what it does but need this
@@ -15,7 +15,7 @@ app.set("view engine", "ejs"); // Sets view engine to ejs
 // Server Connection
 var db;
 MongoClient.connect(url, function(err, database){
-    if(err) throw err;
+    if (err) throw err;
     db = database;
     app.listen(8080);
     console.log("Server Connected");
@@ -30,12 +30,42 @@ app.get("/login", function(req, res){
 app.post("/loginSubmit", function(req, res){
     console.log("User Logged In"); // TEST
 
+    /* ======
     // TEST
     var username = req.body.username;
     var email = req.body.email;
-    var password1 = req.body.password1;
-    var password2 = req.body.password2;
-    console.log(username + email + password1 + password2);
+    var password1 = req.body.password;
+    console.log(username + email + password);
+    ====== */
+})
+
+app.post("/signupSubmit", function(req, res){
+
+    db.collection("users").findOne({"username"}, function(err, result){
+        if (err) throw err;
+
+        if (!result) {
+            console.log("Username Already Exists") // TEST    
+        }
+    })
+
+    // Test if Username already exists
+    // Test if email already exists
+    // Test if passwords match
+    // Login User
+
+    // query for username
+        // if no result
+            // query for email
+                // if no result
+                    // check passwords match
+                        // if do
+                            // logion
+                        // else
+                            // retry
+        // else
+            // retry
+    
 })
 
 /*
