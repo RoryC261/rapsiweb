@@ -29,6 +29,13 @@ app.get("/login", function(req, res){
 // Login Authentication 
 app.post("/loginSubmit", function(req, res){
     console.log("User Logged In"); // TEST
+
+    // TEST
+    var username = req.body.username;
+    var email = req.body.email;
+    var password1 = req.body.password1;
+    var password2 = req.body.password2;
+    console.log(username + email + password1 + password2);
 })
 
 /*
