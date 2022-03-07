@@ -42,14 +42,36 @@ app.post("/loginSubmit", function(req, res){
 app.post("/signupSubmit", function(req, res){
 
     var username = req.body.username;
+    var email = req.body.email;
+    var password1 = req.body.password1;
+    var password2 = req.body.password2;
+
+    var signupSuccess = True;
 
     db.collection("users").findOne({"users.username": username}, function(err, result){
         if (err) throw err;
 
         if (!result) {
-            console.log("Username Already Exists") // TEST
-            res.redirect("/login");
+            console.log("Username Already Exists"); // TEST
+            signUpSuccess = False;
         }
+
+        if (result.users.email = email) {
+            console.log("Email Already Exists"); // TEST
+            signUpSuccess = False;
+        }
+
+        if (password1 != password2) {
+            signUpSuccess = False;
+        }
+
+        if (signUpSuccess == True) {
+            console.log("Logged In");
+        } else {
+            console.log("Not Logged In");
+        }
+
+
     })
 
     // Test if Username already exists
